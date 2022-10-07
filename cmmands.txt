@@ -1,0 +1,8 @@
+ssh  ubuntu@device0 -L 127.0.0.1:3000:127.0.0.1:3000 -R 127.0.0.1:4000:127.0.0.1:4000 "nc -l  127.0.0.1 3000 | ffplay  -nodisp  -fflags nobuffer -"
+
+arecord   -f dat | oggenc - | nc 127.0.0.1 3000
+
+
+nc -l  127.0.0.1 4000
+
+arecord   -f dat | oggenc - | nc 127.0.0.1 3000
