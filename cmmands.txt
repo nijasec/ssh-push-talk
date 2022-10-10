@@ -6,3 +6,6 @@ arecord   -f dat | oggenc - | nc 127.0.0.1 3000
 nc -l  127.0.0.1 4000
 
 arecord   -f dat | oggenc - | nc 127.0.0.1 3000
+ffmpeg -f v4l2 -framerate 5 -video_size 640x480 -i /dev/video0 -fflags nobuffer -f h264 -threads 2 -tune zerolatency  pipe:1 | nc 127.0.0.1 6565
+
+ nc -l 6565 | ffplay -fflags nobuffer 
